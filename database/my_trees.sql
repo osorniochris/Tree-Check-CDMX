@@ -57,7 +57,7 @@ create table reporte(
     imagen_reporte nvarchar(300) not null,
     estatus_reporte nvarchar(50) default "ENVIADO",
     fecha_reporte timestamp default current_timestamp,
-    email_persona nvarchar(100) not null unique,
+    email_persona nvarchar(100) not null,
     
     /*FOREIGN KEYS*/
     FOREIGN KEY (id_arbol) references arbol(id_arbol) on update cascade on delete cascade,
@@ -166,6 +166,17 @@ insert into especies (id_especie, nombre_taxonomico, nombre_comun) values(93,'Ce
 
 
 
+/*				INSERTS DE TIPOS DE REPORTES			*/
+insert into reporte_tipo(id_tipo_reporte, descripcion) values (1, 'PODADO');
+insert into reporte_tipo(id_tipo_reporte, descripcion) values (2, 'FUMIGADO');
+insert into reporte_tipo(id_tipo_reporte, descripcion) values (3, 'DERRIBO');
+insert into reporte_tipo(id_tipo_reporte, descripcion) values (4, 'REGADO');
+insert into reporte_tipo(id_tipo_reporte, descripcion) values (5, 'OTRO');
+/*			FIN DE INSERTS DE TIPOS DE REPORTES			*/
+
+
+
+
 drop procedure if exists agregar_arbol ;
 delimiter  **
 create procedure agregar_arbol(in lat nvarchar(100),in longi nvarchar(100), in referencias_ubi nvarchar(500), in nombreCom nvarchar(100), diametro double, almacen double, captura double, remunicion double, beneficios double, foto nvarchar(300))
@@ -181,7 +192,7 @@ begin
         if(existe = 0) then			
 			set id_arbol_aux = (select ifnull(max(id_arbol) + 1,0) from arbol);        
 			set id_especie_aux = (select id_especie from especies where nombre_comun = nombreCom);            
-            if(id_especie_aux != null) then
+            if(id_especie_aux > 0) then
 				set id_direccion_aux = (select ifnull(max(id_direccion)+1,0) from direccion);    
 				insert into direccion(id_direccion, latitud, longitud, referencias_ubicacion) values (id_direccion_aux, lat, longi, referencias_ubi);
 				insert into arbol (id_arbol, id_direccion, id_especie, diametro_tronco, almacen_carbono, captura_carbono, remunicion_conta, beneficios_mnx, foto) values (id_arbol_aux,id_direccion_aux,id_especie_aux,diametro,almacen, captura, remunicion, beneficios, foto);
@@ -205,5 +216,68 @@ call agregar_arbol('110','100','Se encuentra en una jardinera con rejas blancas'
 call agregar_arbol('111','101','Se encuentra en una jardinera con rejas blancas','capulín',53.2,50,123,200,5000,'../imgs/arboles/');
 call agregar_arbol('111','113','Se encuentra en una jardinera con rejas blancas','aile',53.2,50,123,200,5000,'../imgs/arboles/');
 call agregar_arbol('111','1213','Se encuentra en una jardinera con rejas blancas','manzano',53.2,50,123,200,5000,'../imgs/arboles/');
+
+
+drop procedure if exists buscar_arbol_gps;
+delimiter **
+create procedure buscar_arbol_gps(in lat nvarchar(100),in longi nvarchar(100))
+begin
+	declare existe int;
+    declare id_dir_aux int;
+    declare msj nvarchar(100);    
+    if(lat != '' and longi != '')then
+		set existe = (select count(id_direccion) from direccion where direccion.latitud = lat and direccion.longitud = longi);		        
+        if(existe = 1) then
+			set id_dir_aux = (select id_direccion from direccion where direccion.latitud = lat and direccion.longitud = longi);		            
+			select arbol.id_arbol, arbol.foto from arbol inner join direccion on arbol.id_direccion = direccion.id_direccion where arbol.id_direccion = id_dir_aux;
+        else
+			set msj = 'No se encontraron registros de ese árbol';
+            select msj as 'AVISO';
+        end if;
+	else
+		set msj =  'Alguna de las coordenadas esta vacía.';
+        select msj as 'AVISO';
+    end if;
+end**
+delimiter ;
+
+select * from direccion;
+call buscar_arbol_gps('111','113');
+
+drop procedure if exists agregar_reporte;
+delimiter **
+create procedure agregar_reporte(in id_arb int, in email nvarchar(100), in observaciones nvarchar(1000), in img_reporte nvarchar(300), in tipo_reporte varchar(100))
+begin
+
+	declare id_tipo_reporte_aux int;
+    declare id_reporte_max int;
+    declare msj nvarchar(100);
+    declare existe int;
+    
+    set existe = (select count(id_arbol) from arbol where id_arbol = id_arb);
+    if(existe = 1) then
+		set id_reporte_max = (select ifnull(max(id_reporte) + 1, 0) from reporte);
+        if(tipo_reporte != '') then
+			set existe = (select count(id_tipo_reporte) from reporte_tipo where descripcion = tipo_reporte);
+            if (existe != 0) then
+				set id_tipo_reporte_aux = (select id_tipo_reporte from reporte_tipo where descripcion = tipo_reporte);
+				insert into reporte (id_reporte, observaciones, id_arbol, id_tipo_reporte, imagen_reporte, email_persona) values (id_reporte_max, observaciones, id_arb, id_tipo_reporte_aux, img_reporte, email);
+				set msj = 'Reporte enviado con éxito';
+			else
+				set msj = 'Ese tipo de reporte no existe';
+			end if;
+        else
+			set msj = 'El tipo de reporte es necesario';
+        end if;
+    else
+		set msj = 'Ese árbol no existe en la base de datos';
+    end if;
+    select msj as 'AVISO';
+end**
+delimiter ;
+
+select * from arbol;
+select * from reporte;
+call agregar_reporte(3, 'isaac.mtz.san@outlook.com', 'El árbol esta a punto de caer sobre un puesto de tacos', 'imgs/reportes/arboles', 'OTRo');
 
 
