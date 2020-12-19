@@ -1,0 +1,20 @@
+/*
+#6d7e3e - verde juerte
+#ebf2e3 - verde claro
+*/
+
+.page-footer {
+	background-color: #6d7e3e !important;
+}
+
+.footer-copyright {
+	background-color: #ebf2e3 !important;
+}
+
+.fab {
+	font-size: 25px;
+}
+
+.copy-text {
+	color: #6d7e3e !important;
+}

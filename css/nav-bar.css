@@ -1,0 +1,22 @@
+/*
+#6d7e3e - verde juerte
+#ebf2e3 - verde claro
+*/
+
+nav {
+	background-color: #ffffff !important;
+}
+
+nav ul a {
+	color: #6d7e3e !important;
+	font-weight: bold;
+	font-size: 100%;
+}
+
+.green-background {
+	background-color: #6d7e3e !important;
+}
+
+.nav-buttons {
+	margin: 0% 0% 0% 30%;
+}
