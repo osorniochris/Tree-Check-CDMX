@@ -6,12 +6,15 @@
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="libs/materialize/css/materialize.min.css"  media="screen,projection"/>
       <!--Import validetta css-->
-      <script type="text/css" rel="stylesheet" src="libs/validetta/validetta.css"></script>
+      <link type="text/css" rel="stylesheet" href="libs/validetta/validetta.css"/>
       <!--Import jquery-confirm css-->
-      <script type="text/css" rel="stylesheet" src="libs/jquery-confirm/css/jquery-confirm.css"></script>
+      <link type="text/css" rel="stylesheet" href="libs/jquery-confirm/css/jquery-confirm.css"/>
+      <!--Import Stylesheet-->
+      <link  rel="stylesheet" href="css/censo.css"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 
       <link href="libs/fontawesome/css/all.css" rel="stylesheet">
 
@@ -43,9 +46,124 @@
 
 
       <div class="container">
-        <h1>Censo</h1>
+        <h2>Censo de arbolado</h2>
+        <br>
+        <form class="row">
+          <div class="row">
+            <div class="col l5 s12">
+              <h6 class="center-align row">Datos dendométricos y ambientales</h6>
+              <hr>
+              <br>
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="" id="especie" name="especie" type="text" class="">
+                  <label for="especie">Especie</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="" id="ncomun" name="ncomun" type="text" class="">
+                  <label for="ncomun">Nombre común</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="" id="dtronco" name="dtronco" type="text" class="">
+                  <label for="dtronco">Diámetro de tronco (cm)</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="" id="altura" name="altura" type="text" class="">
+                  <label for="altura">Altura (m)</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="" id="dcopa" name="dcopa" type="text" class="">
+                  <label for="dcopa">Diámetro de copa</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="" id="acarbono" name="acarbono" type="text" class="">
+                  <label for="acarbono">Almacén de carbono (kg)</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="" id="ccarbono" name="ccarbono" type="text" class="">
+                  <label for="ccarbono">Captura de carbono (kg)</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="" id="rcont" name="rcont" type="text" class="">
+                  <label for="rcont">Remunición de contaminantes (g)</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="" id="beneficios" name="beneficios" type="text" class="">
+                  <label for="beneficios">Beneficios ($MXN)</label>
+                </div>
+              </div>
+            </div>
+            <div class="col l7 s12">
+              <h6 class="center-align row">Datos geográficos y foto</h6>
+              <hr class="hr2">
+              <br>
+              <div class="row">
+                <div class="col l5 offset-l1 s12">
+                  <div class="input-field">
+                    <input placeholder="" id="lat" name="lat" type="text" class="">
+                    <label for="lat">Latitud</label>
+                  </div>
+                </div>
+                <div class="col l5 s12">
+                  <div class="input-field">
+                    <input placeholder="" id="lon" name="lon" type="text" class="">
+                    <label for="lon">Longitud</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col offset-l1">
+                  <a class="waves-effect waves-light btn" id="btnmap">Buscar</a>
+                </div>
+              </div>
+              <div class="row">
+                <div id="map"></div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col l6 s12 offset-l1 archivo">
+                  <div class="file-field input-field">
+                    <div class="btn">
+                      <span>File</span>
+                      <input type="file" onchange="readURL(this);">
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <img id="preview" src="images/Logo3C.png" alt="Tu imagen" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col l6 s12">
+              <a class="waves-effect waves-light btn" id="submitn"><i class="white-text fas fa-plus">&nbsp;&nbsp;</i>Subir y agregar más</a>
+            </div>
+            <div class="col l6 s12">
+              <a class="waves-effect waves-light btn" id="submitm"><i class="fas fa-map-marked-alt">&nbsp;&nbsp;</i>Subir y ver en mapa</a>
+            </div>
+          </div>
+        </form>
       </div>
-
       <footer class="page-footer">
         <div class="container">
           <div class="row">
@@ -78,6 +196,15 @@
       <script type="text/javascript" src="libs/validetta/validetta-es.js"></script>
       <!--Import jquery-confirm js-->
       <script type="text/javascript" src="libs/jquery-confirm/js/jquery-confirm.js"></script>
+      
+      <!--Map API import-->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5nYkwqD06O4W_bWMK_qaULEiQ7VJGFS0&callback=initMap" defer></script>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!--Import Map functions-->
+      <script src="js/censoMapa.js"></script>
+      <!--Import scripts for views-->
+      <script src="js/agregarCenso.js"></script>
 
     
     </body>
