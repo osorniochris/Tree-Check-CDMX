@@ -1,23 +1,25 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="libs/materialize/css/materialize.min.css"  media="screen,projection"/>
-      <!--Import validetta css-->
-      <script type="text/css" rel="stylesheet" src="libs/validetta/validetta.css"></script>
-      <!--Import jquery-confirm css-->
-      <script type="text/css" rel="stylesheet" src="libs/jquery-confirm/css/jquery-confirm.css"></script>
-
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-      <link href="libs/fontawesome/css/all.css" rel="stylesheet">
-
-      <link href="css/nav-bar.css" rel="stylesheet">
-      <link href="css/footer.css" rel="stylesheet">
-
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="libs/materialize/css/materialize.min.css"  media="screen,projection"/>
+        <!--Import validetta css-->
+        <link type="text/css" rel="stylesheet" href="libs/validetta/validetta.css"/>
+        <!--Import jquery-confirm css-->
+        <link type="text/css" rel="stylesheet" href="libs/jquery-confirm/css/jquery-confirm.css"/>
+        <!--Import Stylesheet-->
+        <link  rel="stylesheet" href="css/reporte.css"/>
+  
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  
+        <link href="libs/fontawesome/css/all.css" rel="stylesheet">
+  
+        <link href="css/nav-bar.css" rel="stylesheet">
+        <link href="css/footer.css" rel="stylesheet">
     </head>
 
     <body>
@@ -25,7 +27,7 @@
       
       <nav>
         <div class="container nav-wrapper">
-          <a href="#" class="black-text brand-logo">Logo 3-check</a>
+          <a href="#" class="black-text brand-logo"></a>
           <ul id="nav-mobile" class="nav-buttons left hide-on-med-and-down">
             <li><a href="index.html">Inicio</a></li>
             <li><a href="censo.html">Censo</a></li>
@@ -43,14 +45,92 @@
 
 
       <div class="container">
-        <h1>Reporte</h1>
+        <h2>Enviar reporte de árbol</h2>
+        <hr>
+        <br>
+        <form class="row">
+          <div class="row">
+            <div class="col l7 s12">
+              <div id="map"></div>
+            </div>
+            <div class="col l5 s12">
+              <div class="row">
+                <div class="input-field">
+                  <input disabled placeholder="" id="nombre" name="nombre" type="text" class="">
+                  <label for="nombre">Nombre común</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input disabled placeholder="" id="especie" name="especie" type="text" class="">
+                  <label for="especie">Especie</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input disabled placeholder="" id="lat" name="lat" type="text" class="">
+                  <label for="lat">Latitud</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input disabled placeholder="" id="lon" name="lon" type="text" class="">
+                  <label for="lon">Longitud</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="row">
+            <div class="col l6 s12">
+              <div class="input-field">
+                <i class="far fa-envelope prefix"></i>
+                <input placeholder="Email personal para seguimiento" id="mail" name="mail" type="email" class="">
+                <label for="mail">Email para seguimiento</label>
+              </div>
+              <div class="input-field">
+                <i class="far fa-eye prefix"></i>
+                <textarea id="obs" name="obs" class="materialize-textarea"></textarea>
+                <label for="obs">Observaciones</label>
+              </div>
+              <div class="input-field">
+                <i class="far fa-calendar-alt prefix"></i>
+                <input placeholder="Fecha del incidente" id="fecha" name="fecha" type="text" class="datepicker">
+                <label for="fecha">Fecha</label>
+              </div>
+            </div>
+            <div class="col l6 s12">
+              <div class="row">
+                <div class="col l6 s12 offset-l1 archivo">
+                  <div class="file-field input-field">
+                    <div class="btn">
+                      <span>Foto</span>
+                      <input type="file" onchange="readURL(this);">
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <img id="preview" src="images/Logo3C.png" alt="Tu imagen" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col l6 offset-l6">
+              <a class="waves-effect waves-light btn right-align" id="enviar">Enviar</a>
+            </div>
+          </div>
+        </form>
       </div>
 
       <footer class="page-footer">
         <div class="container">
           <div class="row">
             <div class="col l2 s12 center">
-              <a href="#" class="brand-logo">Logo Y X</a>
+              <a href="#" class="brand-logo"></a>
             </div>
             <div class="col l8 s12 center hide-on-med-and-down">
               <a class="white-text" href="index.html">Inicio &nbsp &nbsp</a>
@@ -72,12 +152,22 @@
         </div>
       </footer>
 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
       <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="libs/materialize/js/materialize.min.js"></script>
       <!--Import validetta js-->
       <script type="text/javascript" src="libs/validetta/validetta-es.js"></script>
       <!--Import jquery-confirm js-->
       <script type="text/javascript" src="libs/jquery-confirm/js/jquery-confirm.js"></script>
+
+      <!--Map API import-->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5nYkwqD06O4W_bWMK_qaULEiQ7VJGFS0&callback=initMap" defer></script>
+      <!--Import Map functions-->
+      <script src="js/reporteMapa.js"></script>
+
+      <!--Import scripts for views-->
+      <script src="js/vistaReporte.js"></script>
       
     </body>
   </html>
