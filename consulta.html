@@ -13,6 +13,8 @@
 
       <link href="css/nav-bar.css" rel="stylesheet">
       <link href="css/footer.css" rel="stylesheet">
+      <link href="css/index.css" rel="stylesheet">
+      <link href="css/consulta.css" rel="stylesheet">
 
     </head>
 
@@ -38,15 +40,84 @@
       </nav>
 
 
+      <div class="background-2">
+        <div class="row opaque-back">
+          <div class="container">
+            <div class="row">
+              <div class="col left-align l12 s12 l-green-text">
+                <h2>Consulta tu reporte.</h2>
+              </div>
+              <div class="col left-align l12 s12 l-green-text">
+                <h5>Introduzca el ID de su reporte.</h5>
+              </div>
+            </div>
+            <div class="row valign-wrapper">
+              <div class="col l6 s12">
+                <form>
+                  <div>
+                    <div class="input-field">
+                      <input id="reporte_id" name="reporte_id" type="text" class="white-text">
+                      <label for="reporte_id" class="grey-text">ID del Reporte</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              
+              <div class="col l3 s6 center-align">
+                <a class="waves-effect waves-light btn btn-h-green" href="#">Buscar</a>
+              </div>
+              <div class="col l3 s6 left-align valign-wrapper">
+                <a class="waves-effect waves-light btn btn-l-green" href="">No tengo el ID</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
       <div class="container">
-        <h1>Consulta</h1>
+        <div class="row center-align expand">
+          <table class="centered responsive-table">
+            <thead class="h-green-text">
+              <tr>
+                <th>ID del Reporte</th>
+                <th>Estado</th>
+                <th>Fecha de Atención (Estimada)</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>6541845778</td>
+                <td>En Revisión.</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row expand">
+          <div class="col l5 offset-s3 s6">
+            <img id="img-consulta" src="images/tree-placeholder.jpg" alt="Árbol en Consulta">
+          </div>
+          <div class="col l7 s12 right-align">
+            <form class="col s12">
+              <div class="">
+                <div class="input-field">
+                  <textarea placeholder="Comentario" id="comentario" class="materialize-textarea"></textarea>
+                  <label for="comentario">¿Le gustaría agregar un comentario?</label>
+                </div>
+              </div>
+              <a class="waves-effect waves-light btn btn-h-green" href="#">Agregar Comentario</a>
+            </form>
+          </div>
+        </div>
       </div>
 
       <footer class="page-footer">
         <div class="container">
-          <div class="row">
+          <div class="row valign-wrapper">
             <div class="col l2 s12 center">
-              <a href="#" class="brand-logo">Logo Y X</a>
+              <img id="footer-logo" src="images/LogoYXv.png" alt="Y & X Software">
             </div>
             <div class="col l8 s12 center hide-on-med-and-down">
               <a class="white-text" href="index.html">Inicio &nbsp &nbsp</a>
