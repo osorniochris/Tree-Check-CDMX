@@ -3,6 +3,11 @@
 #ebf2e3 - verde claro
 */
 
+#footer-logo {
+	height: 40%;
+	width: 40%;
+}
+
 .page-footer {
 	background-color: #6d7e3e !important;
 }

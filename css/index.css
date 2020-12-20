@@ -1,0 +1,53 @@
+
+/*
+#6d7e3e - verde juerte
+#ebf2e3 - verde claro
+*/
+
+.valign-wrapper {flex-wrap: wrap;}
+
+.expand {
+	padding: 1.5% 0% 4% 0%;
+}
+
+.background-1 {
+	background-image: url(../images/trees1.jpg);
+	background-size: cover;
+}
+
+.background-2 {
+	background-image: url(../images/trees2.jpg);
+	background-size: cover;
+}
+
+.l-green-text {
+	color: #ebf2e3;
+}
+
+.h-green-text {
+	color: #6d7e3e;
+}
+
+.opaque-back {
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.btn-h-green {
+	background-color: #6d7e3e;
+	color: #ebf2e3;
+}
+
+.btn-h-green:hover {
+	background-color: #ebf2e3;
+	color: #6d7e3e;
+}
+
+.btn-l-green:hover {
+	background-color: #6d7e3e;
+	color: #ebf2e3;
+}
+
+.btn-l-green {
+	background-color: #ebf2e3;
+	color: #6d7e3e;
+}
