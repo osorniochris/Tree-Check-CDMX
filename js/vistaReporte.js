@@ -1,5 +1,7 @@
 $(document).ready(function(){
     $('.datepicker').datepicker();
+    $('select').formSelect();
+
 });
 
 function readURL(input) {

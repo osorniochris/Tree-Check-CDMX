@@ -56,55 +56,55 @@
               <br>
               <div class="row">
                 <div class="input-field">
-                  <input placeholder="" id="especie" name="especie" type="text" class="">
+                  <input placeholder="" id="especie" name="especie" type="text" class="" data-validetta="required">
                   <label for="especie">Especie</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field">
-                  <input placeholder="" id="ncomun" name="ncomun" type="text" class="">
+                  <input placeholder="" id="ncomun" name="ncomun" type="text" class="" data-validetta="required">
                   <label for="ncomun">Nombre común</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field">
-                  <input placeholder="" id="dtronco" name="dtronco" type="text" class="">
+                  <input placeholder="" id="dtronco" name="dtronco" type="text" class="" data-validetta="required,number">
                   <label for="dtronco">Diámetro de tronco (cm)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field">
-                  <input placeholder="" id="altura" name="altura" type="text" class="">
+                  <input placeholder="" id="altura" name="altura" type="text" class="" data-validetta="required,number">
                   <label for="altura">Altura (m)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field">
-                  <input placeholder="" id="dcopa" name="dcopa" type="text" class="">
+                  <input placeholder="" id="dcopa" name="dcopa" type="text" class="" data-validetta="required,number">
                   <label for="dcopa">Diámetro de copa</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field">
-                  <input placeholder="" id="acarbono" name="acarbono" type="text" class="">
+                  <input placeholder="" id="acarbono" name="acarbono" type="text" class="" data-validetta="required,number">
                   <label for="acarbono">Almacén de carbono (kg)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field">
-                  <input placeholder="" id="ccarbono" name="ccarbono" type="text" class="">
+                  <input placeholder="" id="ccarbono" name="ccarbono" type="text" class="" data-validetta="required,number">
                   <label for="ccarbono">Captura de carbono (kg)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field">
-                  <input placeholder="" id="rcont" name="rcont" type="text" class="">
+                  <input placeholder="" id="rcont" name="rcont" type="text" class="" data-validetta="required,number">
                   <label for="rcont">Remunición de contaminantes (g)</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field">
-                  <input placeholder="" id="beneficios" name="beneficios" type="text" class="">
+                  <input placeholder="" id="beneficios" name="beneficios" type="text" class="" data-validetta="required,number">
                   <label for="beneficios">Beneficios ($MXN)</label>
                 </div>
               </div>
@@ -116,13 +116,13 @@
               <div class="row">
                 <div class="col l5 offset-l1 s12">
                   <div class="input-field">
-                    <input placeholder="" id="lat" name="lat" type="text" class="">
+                    <input placeholder="" id="lat" name="lat" type="text" class="" data-validetta="required,number">
                     <label for="lat">Latitud</label>
                   </div>
                 </div>
                 <div class="col l5 s12">
                   <div class="input-field">
-                    <input placeholder="" id="lon" name="lon" type="text" class="">
+                    <input placeholder="" id="lon" name="lon" type="text" class="" data-validetta="required,number">
                     <label for="lon">Longitud</label>
                   </div>
                 </div>
@@ -140,8 +140,8 @@
                 <div class="col l6 s12 offset-l1 archivo">
                   <div class="file-field input-field">
                     <div class="btn">
-                      <span>File</span>
-                      <input type="file" onchange="readURL(this);">
+                      <span>Foto</span>
+                      <input type="file" onchange="readURL(this);" data-validetta="required">
                     </div>
                     <div class="file-path-wrapper">
                       <input class="file-path" type="text">
@@ -192,6 +192,9 @@
         </div>
       </footer>
 
+      <!--Jquery import-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
       <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="libs/materialize/js/materialize.min.js"></script>
       <!--Import validetta js-->
@@ -202,7 +205,6 @@
       <!--Map API import-->
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5nYkwqD06O4W_bWMK_qaULEiQ7VJGFS0&callback=initMap" defer></script>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <!--Import Map functions-->
       <script src="js/censoMapa.js"></script>
       <!--Import scripts for views-->
