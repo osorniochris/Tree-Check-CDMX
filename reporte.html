@@ -49,7 +49,7 @@
         <hr>
         <h6>Selecciona el árbol en el mapa para levantar reporte</h6>
         <br>
-        <form class="row">
+        <form id="reporte" class="row">
           <div class="row">
             <div class="col l7 s12">
               <div id="map"></div>
@@ -91,13 +91,13 @@
               </div>
               <div class="input-field">
                 <i class="fas fa-clipboard-list prefix"></i>
-                <select>
+                <select id="motivo">
                   <option value="" disabled selected>Selecciona un opción</option>
-                  <option value="1">Podado</option>
-                  <option value="2">Fumigado</option>
-                  <option value="3">Derribo</option>
-                  <option value="3">Regado</option>
-                  <option value="3">Otro</option>
+                  <option value="Podado">Podado</option>
+                  <option value="Fumigado">Fumigado</option>
+                  <option value="Derribo">Derribo</option>
+                  <option value="Regado">Regado</option>
+                  <option value="Otro">Otro</option>
                 </select>
                 <label>Motivo del reporte</label>
               </div>
@@ -121,7 +121,7 @@
                       <input type="file" onchange="readURL(this);">
                     </div>
                     <div class="file-path-wrapper">
-                      <input class="file-path" type="text">
+                      <input class="file-path" type="text" id ="img-name">
                     </div>
                   </div>
                 </div>
@@ -133,7 +133,7 @@
           </div>
           <div class="row">
             <div class="col l6 offset-l6">
-              <a class="waves-effect waves-light btn right-align" id="enviar">Enviar</a>
+              <button class="waves-effect waves-light btn right-align" id="enviar" type="submit">Enviar</button>
             </div>
           </div>
         </form>
@@ -171,6 +171,7 @@
       <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="libs/materialize/js/materialize.min.js"></script>
       <!--Import validetta js-->
+      <script type="text/javascript" src="libs/validetta/validetta.js"></script>
       <script type="text/javascript" src="libs/validetta/validetta-es.js"></script>
       <!--Import jquery-confirm js-->
       <script type="text/javascript" src="libs/jquery-confirm/js/jquery-confirm.js"></script>
@@ -182,6 +183,9 @@
 
       <!--Import scripts for views-->
       <script src="js/vistaReporte.js"></script>
+
+      <!--Import script for php logic-->
+      <script src="js/agregarReporte.js"></script>
       
     </body>
   </html>

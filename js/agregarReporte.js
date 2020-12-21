@@ -7,20 +7,26 @@ $(document).ready(function(){
   		bubbleGapTop: 5,
   		realTime : true,
   		onValid : function(e){
+			var data = {id: 1, mail: $("#mail").val(), 
+			obs:$("#obs").val(), img:$("#img-name").val(), 
+			tipo: $("select#motivo").children("option:selected").val(), fecha:$("#fecha").val()};
+
+			var dataJSON = JSON.stringify(data);
+
+			console.log(dataJSON)
   			e.preventDefault();
 	        	$.ajax({
 		            method:"post",
-		            url:"../php/agregarReporte.php",
-		            data: $("form#reporte").serialize(),
+		            url:"php/agregarReporte.php",
+		            data: dataJSON,
 		            cache:false,
 		            success:function(resp){
-		                var Jresp=$.parseJSON(resp);
-		                alert(Jresp);
-		                if(Jresp["isSuccess"]==true){
+		                var Jresp= JSON.parse(JSON.stringify(resp));
+		                alert(JSON.stringify(resp));
+		                if(Jresp.isSuccess == true){
 		                    $.alert({
 		                        title: 'Ok',
-		                        type: 'orange',
-		                        content: Jresp["msg"],
+		                        content: Jresp.msg,
 		                        icon: 'fas fa-globe',
 		                        theme: 'material',
 		                        useBootstrap: false,
@@ -28,7 +34,7 @@ $(document).ready(function(){
 		                        buttons: {
 		                            Ok:{
 		                                text: 'Ok',
-		                                btnClass: 'btn-red',
+		                                btnClass: 'btn-green',
 		                            },
 		                        },
 		                        onDestroy: function () {
@@ -36,11 +42,10 @@ $(document).ready(function(){
     							}
 		                    });
 		                }
-		                else if(Jresp["isSuccess"]==false){
+		                else if(Jresp.isSuccess == false){
 		                	$.alert({
 		                        title: 'Error',
-		                        type: 'orange',
-		                        content: Jresp["msg"],
+		                        content: Jresp.msg,
 		                        icon: 'fas fa-globe',
 		                        theme: 'material',
 		                        useBootstrap: false,
@@ -62,7 +67,6 @@ $(document).ready(function(){
 		                    title: 'Error en el servidor, int&eacute;ntelo m&aacute;s tarde',
 		                    content: '',
 		                    boxWidth: '400px',
-		                    type: 'orange',
 		                    theme: 'material',
 		                    useBootstrap: false,
 		                    buttons: {

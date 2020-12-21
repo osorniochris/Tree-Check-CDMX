@@ -22,14 +22,17 @@ class database
     {
         $this->conn = null;
         try {
-            $this->conn = new PDO("mysql:host=" . $this->server
-                . ";dbname=" . $this->nameDB
-                , $this->user, $this->password);
-            $this->conn->exec("set names uft8");
+            $this->conn = mysqli_connect($this->server,$this->user,$this->password,$this->nameDB);
+            mysqli_query($this->conn, "SET NAMES 'utf8'"); 
             return $this->conn;
         } catch (PDOException $exception) {
             echo "Error de conexión: " . $exception->getMessage();
         }
+    }
+
+    public function closeConn()
+    {
+        mysqli_close($this->conn);
     }
 
 }

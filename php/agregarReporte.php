@@ -8,21 +8,22 @@
 
     $data = json_decode( file_get_contents('php://input') );
 
-    $query = "call agregar_reporte($data->id, '$data->email', '$data->observaciones', '$data->img', '$data->tipo');";
+    $query = "call agregar_reporte($data->id, '$data->mail', '$data->obs', '$data->img', '$data->tipo');";
     $db = new database();
-    $db->getConn();
-    $result  = mysqli_query($db,$query);
+    $result  = mysqli_query($db->getConn(), $query);
     
+    $msj = "";
     if($rows = mysqli_fetch_array($result)){
         $msj .= $rows["AVISO"];
     }
+    $db->closeConn();
 
-    $succes = false;
-    if(strcasecmp($msj,'Reporte enviado con éxito')==0){
+    $success = false;
+    if(strcasecmp($msj,"Reporte enviado con éxito")==0){
     	$success = true;
     }
 
-    $response = new response(null, $succes, $msj);
+    $response = new response(null, $success, $msj);
 
     echo json_encode($response);
 
