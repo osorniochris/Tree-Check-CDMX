@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$("form#reporte").validetta({
+	$("form#buscar").validetta({
 		showErrorMessages : true,
 		display : 'bubble',
 		bubblePosition: 'bottom',
@@ -7,9 +7,7 @@ $(document).ready(function(){
   		bubbleGapTop: 5,
   		realTime : true,
   		onValid : function(e){
-			var data = {id: 1, mail: $("#mail").val(), 
-			obs:$("#obs").val(), img:$("#img-name").val(), 
-			tipo: $("select#motivo").children("option:selected").val(), fecha:$("#fecha").val()};
+			var data = {id: $("#reporte_id").val()};
 
 			var dataJSON = JSON.stringify(data);
 
@@ -17,13 +15,13 @@ $(document).ready(function(){
   			e.preventDefault();
 	        	$.ajax({
 		            method:"post",
-		            url:"php/agregarReporte.php",
+		            url:"php/buscarporID.php",
 		            data: dataJSON,
 		            cache:false,
 		            success:function(resp){
 		                var Jresp= JSON.parse(JSON.stringify(resp));
 		                if(Jresp.isSuccess == true){
-		                    $.alert({
+		                    /*$.alert({
 		                        title: 'Ok',
 		                        content: Jresp.msg,
 		                        icon: 'fas fa-globe',
@@ -36,10 +34,16 @@ $(document).ready(function(){
 		                                btnClass: 'btn-green',
 		                            },
 		                        },
-		                        onDestroy: function () {
-		                        	$(location).attr('href',"index.html");
-    							}
-		                    });
+		                        onDestroy: function () {*/
+					                var info = Jresp.data + '';
+					                var res = info.split(",");
+					                $("#id_").text(res[0]);
+					                $("#obs_").text(res[1]);
+					                $("#estatus_").text(res[2]);
+					                $("#fecha_").text(res[3]);
+					                $("#cancelar").removeAttr('disabled');
+    							/*}
+		                    });*/
 		                }
 		                else if(Jresp.isSuccess == false){
 		                	$.alert({
@@ -56,7 +60,7 @@ $(document).ready(function(){
 		                            },
 		                        },
 		                        onDestroy: function () {
-		                        	$(location).attr('href',"reporte.html");
+		                        	$(location).attr('href',"consulta.html");
     							}
 		                    });
 		                }
