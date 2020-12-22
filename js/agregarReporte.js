@@ -22,7 +22,6 @@ $(document).ready(function(){
 		            cache:false,
 		            success:function(resp){
 		                var Jresp= JSON.parse(JSON.stringify(resp));
-		                alert(JSON.stringify(resp));
 		                if(Jresp.isSuccess == true){
 		                    $.alert({
 		                        title: 'Ok',
