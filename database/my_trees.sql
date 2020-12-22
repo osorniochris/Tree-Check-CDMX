@@ -280,4 +280,46 @@ select * from arbol;
 select * from reporte;
 call agregar_reporte(3, 'isaac.mtz.san@outlook.com', 'El árbol esta a punto de caer sobre un puesto de tacos', 'imgs/reportes/arboles', 'OTRo');
 
+drop procedure if exists buscar_reporte;
+delimiter **
+create procedure buscar_reporte(in id_rep int)
+begin
 
+    declare msj nvarchar(100);
+    declare existe int;
+    
+    set existe = (select count(id_reporte) from reporte where id_reporte = id_rep);
+    if(existe = 1) then
+        set msj = 'Existe';
+    else
+		set msj = 'ID de reporte erroneo';
+    end if;
+    select msj as 'AVISO';
+end**
+delimiter ;
+
+drop procedure if exists seleccionar_reporte;
+delimiter **
+create procedure seleccionar_reporte(in id_rep int)
+begin
+	select id_reporte, observaciones, estatus_reporte, fecha_reporte from reporte where id_reporte = id_rep;
+end**
+delimiter ;
+
+drop procedure if exists cancelar_reporte;
+delimiter **
+create procedure cancelar_reporte(in id_rep int)
+begin
+	declare msj nvarchar(100);
+    declare existe int;
+    
+    set existe = (select count(id_reporte) from reporte where id_reporte = id_rep);
+    if(existe = 1) then
+        update reporte set estatus_reporte = "CANCELADO" where id_reporte = id_rep;
+		set msj = 'Reporte cancelado';
+    else
+		set msj = 'ID de reporte erroneo';
+    end if;
+    select msj as 'AVISO';
+end**
+delimiter ;
