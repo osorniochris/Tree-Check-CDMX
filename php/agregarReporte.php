@@ -19,7 +19,7 @@
     $db->closeConn();
 
     $success = false;
-    if(strcasecmp($msj,"Reporte enviado con éxito")==0){
+    if(strpos($msj,"Reporte enviado con éxito")!==false){
     	$success = true;
     }
 

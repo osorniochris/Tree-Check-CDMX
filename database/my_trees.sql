@@ -262,7 +262,7 @@ begin
             if (existe != 0) then
 				set id_tipo_reporte_aux = (select id_tipo_reporte from reporte_tipo where descripcion = tipo_reporte);
 				insert into reporte (id_reporte, observaciones, id_arbol, id_tipo_reporte, imagen_reporte, email_persona) values (id_reporte_max, observaciones, id_arb, id_tipo_reporte_aux, img_reporte, email);
-				set msj = 'Reporte enviado con éxito';
+				set msj = 'Reporte enviado con éxito. El ID de reporte es: ';
 			else
 				set msj = 'Ese tipo de reporte no existe';
 			end if;
@@ -272,7 +272,7 @@ begin
     else
 		set msj = 'Ese árbol no existe en la base de datos';
     end if;
-    select msj as 'AVISO';
+    select concat_ws(' ', msj, id_reporte_max) as 'AVISO';
 end**
 delimiter ;
 
