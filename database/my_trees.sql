@@ -58,6 +58,7 @@ create table reporte(
     estatus_reporte nvarchar(50) default "ENVIADO",
     fecha_reporte timestamp default current_timestamp,
     email_persona nvarchar(100) not null,
+    nombre_persona nvarchar(100) not null,
     
     /*FOREIGN KEYS*/
     FOREIGN KEY (id_arbol) references arbol(id_arbol) on update cascade on delete cascade,
@@ -246,7 +247,7 @@ call buscar_arbol_gps('111','113');
 
 drop procedure if exists agregar_reporte;
 delimiter **
-create procedure agregar_reporte(in id_arb int, in email nvarchar(100), in observaciones nvarchar(1000), in img_reporte nvarchar(300), in tipo_reporte varchar(100))
+create procedure agregar_reporte(in id_arb int, in email nvarchar(100), in observaciones nvarchar(1000), in img_reporte nvarchar(300), in tipo_reporte varchar(100), in name_persona nvarchar(100))
 begin
 
 	declare id_tipo_reporte_aux int;
@@ -261,7 +262,7 @@ begin
 			set existe = (select count(id_tipo_reporte) from reporte_tipo where descripcion = tipo_reporte);
             if (existe != 0) then
 				set id_tipo_reporte_aux = (select id_tipo_reporte from reporte_tipo where descripcion = tipo_reporte);
-				insert into reporte (id_reporte, observaciones, id_arbol, id_tipo_reporte, imagen_reporte, email_persona) values (id_reporte_max, observaciones, id_arb, id_tipo_reporte_aux, img_reporte, email);
+				insert into reporte (id_reporte, observaciones, id_arbol, id_tipo_reporte, imagen_reporte, email_persona, nombre_persona) values (id_reporte_max, observaciones, id_arb, id_tipo_reporte_aux, img_reporte, email, name_persona);
 				set msj = 'Reporte enviado con éxito. El ID de reporte es: ';
 			else
 				set msj = 'Ese tipo de reporte no existe';
@@ -278,7 +279,7 @@ delimiter ;
 
 select * from arbol;
 select * from reporte;
-call agregar_reporte(3, 'isaac.mtz.san@outlook.com', 'El árbol esta a punto de caer sobre un puesto de tacos', 'imgs/reportes/arboles', 'OTRo');
+call agregar_reporte(3, 'isaac.mtz.san@outlook.com', 'El árbol esta a punto de caer sobre un puesto de tacos', 'imgs/reportes/arboles', 'OTRO', 'Isaac Martinez Sanchez');
 
 drop procedure if exists buscar_reporte;
 delimiter **
@@ -323,3 +324,6 @@ begin
     select msj as 'AVISO';
 end**
 delimiter ;
+
+select * from reporte;
+select * from arbol;
