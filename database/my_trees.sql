@@ -327,3 +327,16 @@ delimiter ;
 
 select * from reporte;
 select * from arbol;
+
+drop procedure if exists obtener_todos_arboles;
+delimiter **
+create procedure obtener_todos_arboles()
+begin
+	select a.id_arbol, d.latitud, d.longitud, d.referencias_ubicacion, e.nombre_taxonomico, e.nombre_comun,
+	a.diametro_tronco, a.almacen_carbono, a.captura_carbono, a.remunicion_conta, a.beneficios_mnx, a.foto
+	from arbol a inner join direccion d on a.id_direccion = d.id_direccion inner join especies e on
+	a.id_especie = e.id_especie;
+end**
+delimiter ;
+
+call obtener_todos_arboles();
