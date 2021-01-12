@@ -7,7 +7,7 @@ $(document).ready(function(){
             var Jresp= JSON.parse(JSON.stringify(resp));
             if(Jresp.isSuccess == true){
                 //Se obtiene la tabla del DOM
-                var table = document.getElementById('tbl');
+                var table = $("#tbl");
 
                 //Por cada reporte recibido
                 var i;
@@ -17,7 +17,7 @@ $(document).ready(function(){
 
                     //Se crean las celdas respectivas a los datos necesarios
                     var cell1 = row.insertCell(0);
-                    cell1.addClass('id_reporte');
+                    cell1.classList.add("id_reporte");
                     var cell2 = row.insertCell(1);
                     var cell3 = row.insertCell(2);
                     var cell4 = row.insertCell(3);
