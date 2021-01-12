@@ -17,7 +17,8 @@
 
       <link href="css/nav-bar.css" rel="stylesheet">
       <link href="css/footer.css" rel="stylesheet">
-      <link href="css/admin.css" rel="stylesheet">
+      <link href="css/index.css" rel="stylesheet">
+      
 
     </head>
     <body>
@@ -41,43 +42,105 @@
       </nav>
 
 
-      <table border="1" cellspacing="0" cellpadding="5" id="tbl">
-        <thead>
-        <tr>
-          <td>ID REPORTE</td>
-          <td>NOMBRE REPORTANTE</td>
-          <td>EMAIL REPORTANTE</td>
-          <td>FECHA</td>
-          <td>OBSERVACIONES / ESTATUS</td>
-          <td>CONFIGURACIÓN</td>
-        </tr>
-      </thead>
-      <tr>
-        <td class="id_reporte">0</td>
-        <td>Kevin Ramos M.</td>
-        <td>kevin@mail.com</td>
-        <td>lunes, enero 11, 2021</td>
-        <td>Arbol en proceso de podado</td>
-        <td class="boton_imprimir">imprimir mi reporte</td>
-      </tr>
-      <tr>
-        <td class="id_reporte">1</td>
-        <td>Isaac Martinez S</td>
-        <td>Martinez</td>
-        <td>lunes, enero 11, 2021</td>
-        <td>Arbol en proceso de caida</td>
-        <td class="boton_imprimir">imprimir mi reporte</td>
-      </tr>
-      <tr>
-        <td class="id_reporte">2</td>
-        <td>Rebeca Johns</td>
-        <td>rebecaj@mail.com</td>
-        <td>lunes, enero 11, 2021</td>
-        <td>Arbol necesida regado</td>
-        <td class="boton_imprimir">imprimir mi reporte</td>
-      </tr>
-    </table>
-    <br>
+      <div class="container">
+        <div class="row">
+          <div class="col center-align l12 s12 h-green-text">
+            <h1>Reportes</h1>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <br>
+
+        <div class="row">
+          <div class="col l4 s12">
+            <div class="card">
+              <div class="card-body center-align">
+                <br>
+                <h4 class="card-title">Total de Reportes</h4>
+                <h5 class="card-text">1,005,000.00</h5>
+                <br>
+              </div>
+            </div>
+          </div>
+          <div class="col l4 s12">
+            <div class="card">
+              <div class="card-body center-align">
+                <br>
+                <h4 class="card-title">Reportes Pendientes</h4>
+                <h5 class="card-text">5,000.00</h5>
+                <br>
+              </div>
+            </div>
+          </div>
+          <div class="col l4 s12">
+            <div class="card">
+              <div class="card-body center-align">
+                <br>
+                <h4 class="card-title">Reportes Terminados</h4>
+                <h5 class="card-text">1,000,000.00</h5>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col center-align">
+          <img src="images/graphs.jpg" alt="Graphs">
+        </div>
+
+        <br>
+
+        <div class="row">
+          <div class="col l12 s12 h-green-text">
+            <h3>Mis Reportes</h3>
+          </div>
+        </div>
+
+        <table border="1" cellspacing="0" cellpadding="5" id="tbl">
+          <thead class="h-green-text">
+            <tr>
+              <td>ID REPORTE</td>
+              <td>NOMBRE REPORTANTE</td>
+              <td>EMAIL REPORTANTE</td>
+              <td>FECHA</td>
+              <td>OBSERVACIONES / ESTATUS</td>
+              <td>CONFIGURACIÓN</td>
+            </tr>
+          </thead>
+          <tr>
+            <td class="id_reporte">0</td>
+            <td>Kevin Ramos M.</td>
+            <td>kevin@mail.com</td>
+            <td>lunes, enero 11, 2021</td>
+            <td>Arbol en proceso de podado</td>
+            <td class="boton_imprimir">imprimir mi reporte</td>
+          </tr>
+          <tr>
+            <td class="id_reporte">1</td>
+            <td>Isaac Martinez S</td>
+            <td>Martinez</td>
+            <td>lunes, enero 11, 2021</td>
+            <td>Arbol en proceso de caida</td>
+            <td class="boton_imprimir">imprimir mi reporte</td>
+          </tr>
+          <tr>
+            <td class="id_reporte">2</td>
+            <td>Rebeca Johns</td>
+            <td>rebecaj@mail.com</td>
+            <td>lunes, enero 11, 2021</td>
+            <td>Arbol necesida regado</td>
+            <td class="boton_imprimir">imprimir mi reporte</td>
+          </tr>
+        </table>
+
+        <br>
+        <br>
+        <br>
+
+      </div>
+    
     <footer class="page-footer">
         <div class="container">
           <div class="row valign-wrapper">
