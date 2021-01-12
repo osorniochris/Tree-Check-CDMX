@@ -279,7 +279,9 @@ delimiter ;
 
 select * from arbol;
 select * from reporte;
-call agregar_reporte(3, 'isaac.mtz.san@outlook.com', 'El árbol esta a punto de caer sobre un puesto de tacos', 'imgs/reportes/arboles', 'OTRO', 'Isaac Martinez Sanchez');
+call agregar_reporte(3, 'isaac.mtz.san@outlook.com', 'El árbol esta a punto de caer sobre un puesto de tacos', './../images/reportado.jpg', 'OTRO', 'Isaac Martinez Sanchez');
+call agregar_reporte(2, 'Rafael.Barajas@outlook.com', 'El árbol necesita un urgente podado', './../images/reportado_1.jpg', 'REGADO', 'Rafael Barajas Perez');
+call agregar_reporte(1, 'Diego.Colon@outlook.com', 'El árbol necesita ser fumigado debido a una plaga de termitas', './../images/reportado_2.jpg', 'FUMIGADO', 'Diego Colon Valladares');
 
 drop procedure if exists buscar_reporte;
 delimiter **
@@ -307,6 +309,7 @@ begin
 end**
 delimiter ;
 
+
 drop procedure if exists cancelar_reporte;
 delimiter **
 create procedure cancelar_reporte(in id_rep int)
@@ -327,3 +330,37 @@ delimiter ;
 
 select * from reporte;
 select * from arbol;
+
+drop procedure if exists obtener_todos_arboles;
+delimiter **
+create procedure obtener_todos_arboles()
+begin
+	select a.id_arbol, d.latitud, d.longitud, d.referencias_ubicacion, e.nombre_taxonomico, e.nombre_comun,
+	a.diametro_tronco, a.almacen_carbono, a.captura_carbono, a.remunicion_conta, a.beneficios_mnx, a.foto
+	from arbol a inner join direccion d on a.id_direccion = d.id_direccion inner join especies e on
+	a.id_especie = e.id_especie;
+end**
+delimiter ;
+
+call obtener_todos_arboles();
+
+
+drop procedure if exists obtener_reporte_admin;
+delimiter **
+create procedure obtener_reporte_admin(in id_reporte_in int(10))
+begin
+	declare id_arbol_aux int;
+    declare id_dir_aux int;
+    set id_arbol_aux = (select id_arbol from reporte where id_reporte = id_reporte_in);
+    set id_dir_aux = (select id_direccion from arbol where id_arbol = id_arbol_aux);
+	select id_reporte, nombre_persona, email_persona, fecha_reporte, observaciones, estatus_reporte, imagen_reporte, direccion.latitud, direccion.longitud from reporte inner join arbol on reporte.id_arbol = arbol.id_arbol inner join direccion on arbol.id_direccion = direccion.id_direccion where id_reporte = id_reporte_in and direccion.id_direccion = id_dir_aux;
+end**
+delimiter ;
+
+call obtener_reporte_admin(0);
+call obtener_reporte_admin(1);
+call obtener_reporte_admin(2);
+
+select * from reporte;
+select * from arbol;
+select * from direccion;
