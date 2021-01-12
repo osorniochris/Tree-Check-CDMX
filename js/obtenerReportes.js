@@ -7,7 +7,7 @@ $(document).ready(function(){
             var Jresp= JSON.parse(JSON.stringify(resp));
             if(Jresp.isSuccess == true){
                 //Se obtiene la tabla del DOM
-                var table = $("#tbl");
+                var table = document.getElementById('tbl');
 
                 //Por cada reporte recibido
                 var i;
