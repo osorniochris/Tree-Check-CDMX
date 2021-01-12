@@ -19,7 +19,7 @@
     $db->closeConn();
 
     $success = false;
-    if(strcasecmp($msj,"Arbol Registrado con éxito")==0){
+    if(strcasecmp($msj,"Árbol agregado correctamente :)")==0){
     	$success = true;
     }
 
