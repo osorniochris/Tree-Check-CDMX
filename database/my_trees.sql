@@ -370,7 +370,7 @@ end**
 delimiter ;
 
 call obtener_todos_reportes();
-
+use my_trees;
 select * from reporte;
 select * from arbol;
 select * from direccion;
