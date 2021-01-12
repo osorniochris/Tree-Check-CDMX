@@ -361,6 +361,16 @@ call obtener_reporte_admin(0);
 call obtener_reporte_admin(1);
 call obtener_reporte_admin(2);
 
+drop procedure if exists obtener_todos_reportes;
+delimiter **
+create procedure obtener_todos_reportes()
+begin
+	select id_reporte, nombre_persona, email_persona, fecha_reporte, estatus_reporte from reporte;
+end**
+delimiter ;
+
+call obtener_todos_reportes();
+
 select * from reporte;
 select * from arbol;
 select * from direccion;
