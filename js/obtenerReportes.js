@@ -13,7 +13,7 @@ $(document).ready(function(){
                 var i;
                 for (i = 0; i < Jresp.data.length; i++) {
                     //Se crea una fila vacía
-                    var row = table.insertRow(i);
+                    var row = table.insertRow(i + 1);
 
                     //Se crean las celdas respectivas a los datos necesarios
                     var cell1 = row.insertCell(0);
@@ -21,6 +21,7 @@ $(document).ready(function(){
                     var cell3 = row.insertCell(2);
                     var cell4 = row.insertCell(3);
                     var cell5 = row.insertCell(4);
+                    var cell6 = row.insertCell(5);
 
                     //Se insertan los valores correspondientes en las celdas
                     cell1.innerHTML = Jresp.data[i]["id_reporte"];
@@ -28,6 +29,7 @@ $(document).ready(function(){
                     cell3.innerHTML = Jresp.data[i]["email_persona"];
                     cell4.innerHTML = Jresp.data[i]["fecha_reporte"];
                     cell5.innerHTML = Jresp.data[i]["estatus_reporte"];
+                    cell6.innerHTML = "<i class=\"boton_imprimir fas fa-file-pdf\"></i>&nbsp<i class=\"fas fa-edit\"></i>";
                 }
             }
             else if(Jresp.isSuccess == false){
