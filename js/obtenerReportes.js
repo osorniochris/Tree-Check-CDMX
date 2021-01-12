@@ -5,6 +5,7 @@ $(document).ready(function(){
         cache:false,
         success:function(resp){
             var Jresp= JSON.parse(JSON.stringify(resp));
+            console.log(Jresp);
             if(Jresp.isSuccess == true){
                 //Se obtiene la tabla del DOM
                 var table = document.getElementById('tbl');
@@ -64,4 +65,3 @@ $(document).ready(function(){
         }
     });
 });
-    
