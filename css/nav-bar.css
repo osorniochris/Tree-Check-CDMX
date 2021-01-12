@@ -13,6 +13,16 @@ nav ul a {
 	font-size: 100%;
 }
 
+#nav-logo {
+	margin-top: 1%; 
+	height: 100%;
+	width: 100%;
+}
+
+.brand-logo{
+	width: 20% !important;
+}
+
 .green-background {
 	background-color: #6d7e3e !important;
 }
