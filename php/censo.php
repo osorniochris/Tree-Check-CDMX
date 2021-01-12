@@ -6,9 +6,9 @@
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With, Authorization");
 
-    $data = json_decode(file_get_contents('php://input'))
+    $data = json_decode(file_get_contents('php://input'));
 
-    $query = "call agregar_arbol($data->lat, $data->lon, '', $data->ncomun, $data->dtronco, $data->acarbono, $data->ccarbono, $data->rcont, $data->beneficios, $data->img);"
+    $query = "call agregar_arbol('$data->lat', '$data->lon', '', '$data->ncomun', '$data->dtronco', '$data->acarbono', '$data->ccarbono', '$data->rcont', '$data->beneficios', '$data->img');";
  	$db = new database();
     $result  = mysqli_query($db->getConn(), $query);
     
