@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 	$("form#censo").validetta({
 		showErrorMessages : true,
@@ -58,7 +59,7 @@ $(document).ready(function(){
 		                            },
 		                        },
 		                        onDestroy: function () {
-		                        	$(location).attr('href',"reporte.html");
+		                        	$(location).attr('href',"censo.html");
     							}
 		                    });
 		                }
@@ -83,4 +84,6 @@ $(document).ready(function(){
   		onError : function(e){
     		e.preventDefault();
   		}
+	
 	});
+});
