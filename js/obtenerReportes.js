@@ -17,7 +17,6 @@ $(document).ready(function(){
 
                     //Se crean las celdas respectivas a los datos necesarios
                     var cell1 = row.insertCell(0);
-                    cell1.className = 'id_reporte';
                     var cell2 = row.insertCell(1);
                     var cell3 = row.insertCell(2);
                     var cell4 = row.insertCell(3);
@@ -26,6 +25,7 @@ $(document).ready(function(){
 
                     //Se insertan los valores correspondientes en las celdas
                     cell1.innerHTML = Jresp.data[i]["id_reporte"];
+                    cell1.className = 'id_reporte';
                     cell2.innerHTML = Jresp.data[i]["nombre_persona"];
                     cell3.innerHTML = Jresp.data[i]["email_persona"];
                     cell4.innerHTML = Jresp.data[i]["fecha_reporte"];
