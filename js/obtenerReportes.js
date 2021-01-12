@@ -26,13 +26,18 @@ $(document).ready(function(){
 
                     //Se insertan los valores correspondientes en las celdas
                     cell1.innerHTML = Jresp.data[i]["id_reporte"];
-                    //cell1.className = 'id_reporte';
+                    cell1.className = 'id_reporte';
                     cell2.innerHTML = Jresp.data[i]["nombre_persona"];
                     cell3.innerHTML = Jresp.data[i]["email_persona"];
                     cell4.innerHTML = Jresp.data[i]["fecha_reporte"];
                     cell5.innerHTML = Jresp.data[i]["estatus_reporte"];
                     cell6.innerHTML = "<i class=\"boton_imprimir fas fa-file-pdf\"></i>&nbsp<i class=\"fas fa-edit\"></i>";
                 }
+
+                var mi = document.getElementsByTagName('footer')[0];
+                var script= document.createElement('script');
+                script.src= './js/convertir_pdf.js';
+                mi.appendChild(script);
             }
             else if(Jresp.isSuccess == false){
                 $.alert({

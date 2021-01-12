@@ -3,12 +3,13 @@ $(document).ready(function() {
   var dataJSON = "";
   var valores = "";
   $(".boton_imprimir").click(function() {
-    $(this).parents("tr").find(".id_reporte").each(function() {
+    $(this).parents("td").find(".id_reporte").each(function() {
       valores += $(this).html();
     });
     data_json = {reporte: valores};
     dataJSON = JSON.stringify(data_json);
     console.log(dataJSON);
+    alert(dataJSON);
     $.ajax({
         method:"POST",
         url:"php/print_view.php",
