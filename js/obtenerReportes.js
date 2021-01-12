@@ -8,7 +8,7 @@ $(document).ready(function(){
             console.log(Jresp);
             if(Jresp.isSuccess == true){
                 //Se obtiene la tabla del DOM
-                var table = $("#tbl");
+                var table = document.getElementById('tbl');
 
                 //Por cada reporte recibido
                 var i;
