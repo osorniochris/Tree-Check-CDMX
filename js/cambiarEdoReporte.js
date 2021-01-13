@@ -5,13 +5,12 @@ $(document).ready(function() {
   $(".cambiarEdo").click(function() {
     var confirma = confirm("¿Desea actualizar el estado del reporte?");
       if (confirma == true){
-        $(this).parents("td").find(".id_reporte").each(function() {
-          idrep += $(this).html();
+        $(this).parents("tr").find(".id_reporte").each(function() {
+          idrep += $(this).html() + "\n";
         });
         data_json = {id: idrep};
         dataJSON = JSON.stringify(data_json);
         console.log(dataJSON);
-        alert(dataJSON);
 
         $.ajax({
             method:"POST",

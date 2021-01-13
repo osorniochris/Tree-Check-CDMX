@@ -4,7 +4,7 @@ $(document).ready(function() {
   var valores = "";
   var idrep = "";
   $(".boton_imprimir").click(function() {
-    $(this).parents("td").find(".id_reporte").each(function() {
+    $(this).parents("tr").find(".id_reporte").each(function() {
       valores += $(this).html();
     });
     data_json = {reporte: valores};
@@ -38,13 +38,12 @@ $(document).ready(function() {
   $(".cambiarEdo").click(function() {
     var confirma = confirm("¿Desea actualizar el estado del reporte?");
       if (confirma == true){
-        $('#tbl').each(function() { 
-          idrep = $(this).find(".id_reporte").html();  
-        }); 
+        $(this).parents("tr").find(".id_reporte").each(function() {
+          idrep += $(this).html() + "\n";
+        });
         data_json = {id: idrep};
         dataJSON = JSON.stringify(data_json);
         console.log(dataJSON);
-        alert(dataJSON);
 
         $.ajax({
             method:"POST",
@@ -105,7 +104,7 @@ $(document).ready(function() {
                     });
             }
         });
-        valores = "";
+        idrep = "";
       }
   });
 
