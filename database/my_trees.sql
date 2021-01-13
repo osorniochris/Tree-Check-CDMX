@@ -369,6 +369,39 @@ begin
 end**
 delimiter ;
 
+drop procedure if exists cambiarEdo;
+delimiter **
+create procedure cambiarEdo(in id_rep int)
+begin
+	declare msj nvarchar(100);
+    declare existe int;
+    declare edo nvarchar(50);
+    
+    set existe = (select count(id_reporte) from reporte where id_reporte = id_rep);
+    set edo = (select estatus_reporte from reporte where id_reporte = id_rep);
+    if(existe = 1) then
+		if(edo = "ENVIADO") then
+			update reporte set estatus_reporte = "EN REVISION" where id_reporte = id_rep;
+            set msj = 'Reporte actualizado';
+		end if;
+		if(edo = "EN REVISION") then 
+			update reporte set estatus_reporte = "EN PROCESO" where id_reporte = id_rep;
+            set msj = 'Reporte actualizado';
+		end if;
+        if(edo = "EN PROCESO") then
+			update reporte set estatus_reporte = "COMPLETADO" where id_reporte = id_rep;
+            set msj = 'Reporte actualizado';
+		end if;
+        if(edo = "COMPLETADO") then
+			set msj = 'Reporte finalizado';
+		end if;
+    else
+		set msj = 'ID de reporte inexistente';
+    end if;
+    select msj as 'AVISO';
+end**
+delimiter ;
+
 call obtener_todos_reportes();
 use my_trees;
 select * from reporte;
