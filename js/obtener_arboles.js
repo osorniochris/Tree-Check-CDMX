@@ -26,6 +26,7 @@ $(document).ready(function(){
                         '<h6>Especie: '+Jresp.data[i]["nombre_taxonomico"]+'</h6>'+
                         '<img src='+ Jresp.data[i]["foto"]+' alt="Imagen">'+
                         '<br>'+ Jresp.data[i]["referencias_ubicacion"]+
+                        '<br>'+ Jresp.data[i]["foto"]+
                         '<br>Di&aacute;metro de tronco: '+ Jresp.data[i]["diametro_tronco"]+
                         '<br>Almac&eacute;n de carbono: '+ Jresp.data[i]["almacen_carbono"]+
                         '<br>Captura de carbono: '+ Jresp.data[i]["captura_carbono"]+
