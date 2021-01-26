@@ -53,6 +53,15 @@
         <hr>
         <h6>Selecciona el árbol en el mapa para levantar reporte</h6>
         <br>
+        <div class="row valign-wrapper">
+          <div class="col l8 s6 input-field">
+            <input placeholder="" id="address" name="address" type="text" class="">
+            <label for="lon">Dirección</label>
+          </div>
+          <div class="col l4 s6">
+            <a class="waves-effect waves-light btn" id="bdir">Buscar</a>
+          </div>
+        </div>
         <form id="reporte" class="row">
           <div class="row">
             <div class="col l7 s12">
@@ -181,15 +190,17 @@
       <script type="text/javascript" src="libs/jquery-confirm/js/jquery-confirm.js"></script>
 
       <!--Map API import-->
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjTFfjsaDZ6bItxsVLyy1R6atO9GkFH_M&callback=initMap" defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjTFfjsaDZ6bItxsVLyy1R6atO9GkFH_M&callback=initMap&libraries=places&v=weekly" defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjTFfjsaDZ6bItxsVLyy1R6atO9GkFH_M&callback=initMap&libraries=&v=weekly" defer></script>
+
       <!--Import Map functions-->
-      <script src="js/reporteMapa.js"></script>
+      <script src="./js/reporteMapa.js"></script>
 
       <!--Import scripts for views-->
-      <script src="js/vistaReporte.js"></script>
+      <script src="./js/vistaReporte.js"></script>
 
       <!--Import script for php logic-->
-      <script src="js/agregarReporte.js"></script>
+      <script src="./js/agregarReporte.js"></script>
       
     </body>
   </html>

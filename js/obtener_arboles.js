@@ -13,71 +13,6 @@ $(document).ready(function(){
                     center: cdmx,
                     mapTypeId: 'satellite'
                 });
-
-                // Create the search box and link it to the UI element.
-                var input = document.getElementById('pac-input');
-                var searchBox = new google.maps.places.SearchBox(input);
-                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-                // Bias the SearchBox results towards current map's viewport.
-                map.addListener('bounds_changed', function() {
-                    searchBox.setBounds(map.getBounds());
-                });
-
-                var markers = [];
-                // Listen for the event fired when the user selects a prediction and retrieve
-                // more details for that place.
-                searchBox.addListener('places_changed', function() {
-                    var places = searchBox.getPlaces();
-
-                    if (places.length == 0) {
-                    return;
-                    }
-
-                    // Clear out the old markers.
-                    markers.forEach(function(marker) {
-                    marker.setMap(null);
-                    });
-                    markers = [];
-
-                    // For each place, get the icon, name and location.
-                    var bounds = new google.maps.LatLngBounds();
-                    /*
-                    * Para fines de minimizar las adecuaciones debido a que es este una demostración de adaptación mínima de código, se reemplaza forEach por some.
-                    */ 
-                    // places.forEach(function(place) {
-                    places.some(function(place) {
-                    if (!place.geometry) {
-                        console.log("Returned place contains no geometry");
-                        return;
-                    }
-                    var icon = {
-                        url: place.icon,
-                        size: new google.maps.Size(71, 71),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(17, 34),
-                        scaledSize: new google.maps.Size(25, 25)
-                    };
-
-                    // Create a marker for each place.
-                    markers.push(new google.maps.Marker({
-                        map: map,
-                        icon: icon,
-                        title: place.name,
-                        position: place.geometry.location
-                    }));
-
-                    if (place.geometry.viewport) {
-                        // Only geocodes have viewport.
-                        bounds.union(place.geometry.viewport);
-                    } else {
-                        bounds.extend(place.geometry.location);
-                    }
-                    // some interrumpe su ejecución en cuanto devuelve un valor verdadero (true)
-                    return true;
-                    });
-                    map.fitBounds(bounds);
-                });
                 
                 for(var i in Jresp.data){
                     const marker = new google.maps.Marker({
@@ -104,6 +39,20 @@ $(document).ready(function(){
                     });
                 }
 
+                const geocoder = new google.maps.Geocoder();
+                document.getElementById("submit").addEventListener("click", () => {
+                    geocodeAddress(geocoder, map);
+                });
+                function geocodeAddress(geocoder, resultsMap) {
+                    const address = document.getElementById("address").value;
+                    geocoder.geocode({ address: address }, (results, status) => {
+                      if (status === "OK") {
+                        resultsMap.setCenter(results[0].geometry.location);
+                      } else {
+                        alert("Geocode was not successful for the following reason: " + status);
+                      }
+                    });
+                  }
                 document.getElementById("btnlat").onclick = function buscarLat() {
                     const latlng = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lon").value);
                     map.setCenter(latlng)

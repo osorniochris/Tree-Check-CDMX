@@ -70,8 +70,16 @@
               </div>
             </div>
           </div>
+          <div class="row valign-wrapper">
+            <div class="col l8 s6 input-field">
+              <input placeholder="" id="address" name="address" type="text" class="">
+              <label for="lon">Dirección</label>
+            </div>
+            <div class="col l4 s6">
+              <a class="waves-effect waves-light btn" id="submit">Buscar por dirección</a>
+            </div>
+          </div>
           <div class="row">
-            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
             <div id="map"></div>
           </div>
         </div>
@@ -117,6 +125,7 @@
 
       <!--Map API import-->
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjTFfjsaDZ6bItxsVLyy1R6atO9GkFH_M&callback=initMap&libraries=places&v=weekly" defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjTFfjsaDZ6bItxsVLyy1R6atO9GkFH_M&callback=initMap&libraries=&v=weekly" defer></script>
       
       <script src="./js/obtener_arboles.js"></script>
       
