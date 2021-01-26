@@ -213,10 +213,10 @@ select * from direccion;
 select * from arbol;
 select * from especies;
 
-call agregar_arbol('19.419697','-99.191041','Se encuentra en una jardinera con rejas blancas','naranja',53.2,50,123,200,5000,'images/amapa.jpg');
-call agregar_arbol('19.419653','-99.190226','Se encuentra en una jardinera con rejas blancas','capulín',53.2,50,123,200,5000,'images/amapa.jpg');
-call agregar_arbol('19.419072','-99.190999','Se encuentra en una jardinera con rejas blancas','aile',53.2,50,123,200,5000,'images/amapa.jpg');
-call agregar_arbol('19.418444','-99.190780','Se encuentra en una jardinera con rejas blancas','manzano',53.2,50,123,200,5000,'images/amapa.jpg');
+call agregar_arbol('19.419697','-99.191041','Se encuentra en una jardinera con rejas blancas','naranja',53.2,50,123,200,5000,'naranjo.jpg');
+call agregar_arbol('19.419653','-99.190226','Se encuentra en una jardinera con rejas blancas','capulín',53.2,50,123,200,5000,'capulin.jpg');
+call agregar_arbol('19.419072','-99.190999','Se encuentra en una jardinera con rejas blancas','aile',53.2,50,123,200,5000,'aile.jpg');
+call agregar_arbol('19.418444','-99.190780','Se encuentra en una jardinera con rejas blancas','manzano',53.2,50,123,200,5000,'manzano.jpg');
 
 
 drop procedure if exists buscar_arbol_gps;

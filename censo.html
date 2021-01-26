@@ -116,26 +116,22 @@
               <hr class="hr2">
               <br>
               <div class="row">
+                <div id="map"></div>
+              </div>
+              <br>
+              <div class="row">
                 <div class="col l5 offset-l1 s12">
                   <div class="input-field">
-                    <input placeholder="" id="lat" name="lat" type="text" class="" data-validetta="required,number">
+                    <input disabled placeholder="" id="lat" name="lat" type="text" class="" data-validetta="required,number">
                     <label for="lat">Latitud</label>
                   </div>
                 </div>
                 <div class="col l5 s12">
                   <div class="input-field">
-                    <input placeholder="" id="lon" name="lon" type="text" class="" data-validetta="required,number">
+                    <input disabled placeholder="" id="lon" name="lon" type="text" class="" data-validetta="required,number">
                     <label for="lon">Longitud</label>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col offset-l1">
-                  <a class="waves-effect waves-light btn" id="btnmap">Buscar</a>
-                </div>
-              </div>
-              <div class="row">
-                <div id="map"></div>
               </div>
               <br>
               <div class="row">
@@ -207,7 +203,8 @@
       <script type="text/javascript" src="libs/jquery-confirm/js/jquery-confirm.js"></script>
       
       <!--Map API import-->
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjTFfjsaDZ6bItxsVLyy1R6atO9GkFH_M&callback=initMap" defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjTFfjsaDZ6bItxsVLyy1R6atO9GkFH_M&callback=initMap&libraries=places&v=weekly" defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjTFfjsaDZ6bItxsVLyy1R6atO9GkFH_M&callback=initMap&libraries=&v=weekly" defer></script>
       
       <!--Import php logic-->
       <script src="js/censo.js"></script>
