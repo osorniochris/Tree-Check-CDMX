@@ -8,7 +8,7 @@
 
     $data = json_decode( file_get_contents('php://input') );
 
-    $query = "call agregar_reporte($data->id, '$data->mail', '$data->obs', '$data->img', '$data->tipo');";
+    $query = "call agregar_reporte($data->id, '$data->mail', '$data->obs', '$data->img', '$data->tipo', '$data->nombre');";
     $db = new database();
     $result  = mysqli_query($db->getConn(), $query);
     

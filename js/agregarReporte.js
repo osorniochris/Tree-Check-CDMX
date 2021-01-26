@@ -9,7 +9,8 @@ $(document).ready(function(){
   		onValid : function(e){
 			var data = {id: 1, mail: $("#mail").val(), 
 			obs:$("#obs").val(), img:$("#img-name").val(), 
-			tipo: $("select#motivo").children("option:selected").val(), fecha:$("#fecha").val()};
+			tipo: $("select#motivo").children("option:selected").val(), 
+			fecha:$("#fecha").val(), nombre:$("#nombre").val()};
 
 			var dataJSON = JSON.stringify(data);
 
