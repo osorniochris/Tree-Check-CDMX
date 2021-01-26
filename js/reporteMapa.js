@@ -24,13 +24,12 @@ $(document).ready(function(){
                     const contentString =
                         '<h2>' + Jresp.data[i]["nombre_comun"]+'</h2>'+
                         '<h6>Especie: '+Jresp.data[i]["nombre_taxonomico"]+'</h6>'+
-                        '<img src='+Jresp.data[i]["foto"]+' alt="Imagen">'+
+                        '<img src='+ Jresp.data[i]["foto"]+' alt="Imagen" align="left"/>'+
                         '<br>'+ Jresp.data[i]["referencias_ubicacion"]+
-                        '<br>Di&aacute;metro de tronco: '+ Jresp.data[i]["diametro_tronco"]+
-                        '<br>Almac&eacute;n de carbono: '+ Jresp.data[i]["almacen_carbono"]+
-                        '<br>Captura de carbono: '+ Jresp.data[i]["captura_carbono"]+
-                        '<br>Beneficios $MXN: $'+ Jresp.data[i]["beneficios_mnx"]
-                        ;
+                        '<br> &nbsp;Di&aacute;metro de tronco: '+ Jresp.data[i]["diametro_tronco"]+
+                        '<br> &nbsp;Almac&eacute;n de carbono: '+ Jresp.data[i]["almacen_carbono"]+
+                        '<br> &nbsp;Captura de carbono: '+ Jresp.data[i]["captura_carbono"]+
+                        '<br> &nbsp;Beneficios $MXN: $'+ Jresp.data[i]["beneficios_mnx"];
                     const infowindow = new google.maps.InfoWindow({
                         content: contentString,
                         });
