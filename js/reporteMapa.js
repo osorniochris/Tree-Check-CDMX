@@ -37,9 +37,10 @@ $(document).ready(function(){
                     marker.addListener("click", () => {
                         infowindow.open(map, marker);
                         document.getElementById("nombre").value =Jresp.data[i]["nombre_comun"];
-                        document.getElementById("especie").value = Jresp.data[i]["nomre_taxonomico"];
+                        document.getElementById("especie").value = Jresp.data[i]["nombre_taxonomico"];
                         document.getElementById("lat").value = Jresp.data[i]["latitud"];
                         document.getElementById("lon").value = Jresp.data[i]["longitud"];
+                        document.getElementById("id").value = Jresp.data[i]["id_arbol"];
                     });
                 }
 
